@@ -36,23 +36,45 @@
 #print("Il tipo di dato dell'input è:", type(input_utente))
 
 
-harry_potter=''' Harry si sentì leggero mentre saliva sulla scopa volante.
-Per la prima volta, Harry provò il brivido del decollo.
-Quella del volo, diventò immediatamente la più grande passione di Harry.'''
+#harry_potter=''' Harry si sentì leggero mentre saliva sulla scopa volante.
+#Per la prima volta, Harry provò il brivido del decollo.
+#Quella del volo, diventò immediatamente la più grande passione di Harry.'''
 
 # Richiesta della parola da trovare
-parola_da_trovare = input("Inserisci la parola da trovare nel testo: ")
+#parola_da_trovare = input("Inserisci la parola da trovare nel testo: ")
 
 # Conteggio delle occorrenze della parola
-occorrenze = harry_potter.lower().count(parola_da_trovare.lower())
-print(f"La parola '{parola_da_trovare}' appare {occorrenze} volte nel testo.")
+#occorrenze = harry_potter.lower().count(parola_da_trovare.lower())
+#print(f"La parola '{parola_da_trovare}' appare {occorrenze} volte nel testo.")
 
 # Richiesta della nuova parola con cui sostituire
-nuova_parola = input("Inserisci la nuova parola con cui sostituire: ")
+#nuova_parola = input("Inserisci la nuova parola con cui sostituire: ")
 
 # Sostituzione della parola
-testo_modificato = harry_potter.replace(parola_da_trovare, nuova_parola)
+#testo_modificato = harry_potter.replace(parola_da_trovare, nuova_parola)
 
 # Stampa del testo modificato
-print("\nTesto modificato:")
-print(testo_modificato)
+#print("\nTesto modificato:")
+#print(testo_modificato)
+
+
+print("inserisci il tuo anno di nascita ")
+anno_nascita=int(input())
+anno_cliente=2024-anno_nascita
+print(anno_cliente)
+
+
+if anno_cliente < 18:
+    print('sei minorenne non hai la patente e non puoi guidare ')
+  
+
+else:    
+    print('sei maggiorenne hai l eta per guidare ma hai ottenuto la patente ?')
+    patente_guida=str(input())
+   
+    if patente_guida== "si":
+        print('sei autorizato a guidare')
+
+    else:
+        print('sei maggiorenne ma non hai la patente e non puoi guidare ')    
+   
