@@ -181,10 +181,10 @@
      #   print(f"Mi dispiace, hai terminato i {tentativi_max} tentativi. Il numero era {numero_da_indovinare}.")
 
 
-clients=["Maria","Luisa","Marco"]
+# clients=["Maria","Luisa","Marco"]
 
-for client in clients:
-    print(client)
+# for client in clients:
+#     print(client)
 
 
 # Crea una lista della spesa che contenga
@@ -205,3 +205,47 @@ for client in clients:
 # stampa nuovamente tutti gli articoli
 # (sempre ordinati alfabeticamente).
 # BONUS: attenzione al case!
+
+
+# modifica il programma precedente :
+# sel'utente inserisce un articolo presente,
+# chiedi al utente se vuole rimuoverlo.
+# in caso affermativo, rimuovi l'articolo
+# dalla lista.
+
+
+items = ["fagioli", "noci", "mele"]
+items.sort()
+
+
+for item in items:
+print("-", item)
+
+
+user_item = input("Aggiungi un articolo: ").lower().strip()
+
+
+if not user_item:
+print("Errore: Non hai inserito alcun articolo")
+elif user_item in items:
+print("Errore: Articolo già presente")
+else:
+items.append(user_item)
+print("Articolo aggiunto ✅")
+items.sort()
+
+
+for item in items:
+print("-", item)
+
+
+
+# EPICODE Institute of Technology 30/10/2024 21:01 • 
+# Modifica il programma precedente:
+# l'utente deve poter inserire più articoli alla volta,
+# separandoli col carattere |
+# In tal caso, il programma converte
+# tale stringa inserita dall'utente in una lista di articoli,
+# i quali vengono poi aggiunti alla lista iniziale.
+# Per semplicità, non controllare se l'utente
+# inserisce articoli già presenti o stringhe vuote.
