@@ -147,27 +147,220 @@
 #per stampare a schermo un messaggio diverso,
 #che contenga il valore del suo
 #attributo specifico (film famoso).
-class Giorge:
-    def __init__(self,name,age,):
-        self.name = name
-        self.age = age
-    def process(self):
-        print(f"il mio nome e {self.name} e ho {self.age}")
 
-class Regista(Giorge):
-    def __init__(self,name,age,film):
-        super().__init__(name,age)
-        self.film = film
+# class Giorge:
+#     def __init__(self,name,age,):
+#         self.name = name
+#         self.age = age
+#     def process(self):
+#         print(f"il mio nome e {self.name} e ho {self.age}")
 
-    def process(self):  
-        print(f"il mio nome e {self.name} e ho {self.age} e ho fatto {self.film}")
+# class Regista(Giorge):
+#     def __init__(self,name,age,film):
+#         super().__init__(name,age)
+#         self.film = film
 
-giorge=Giorge("giorge",22)
-giorge.process()
+#     def process(self):  
+#         print(f"il mio nome e {self.name} e ho {self.age} e ho fatto {self.film}")
 
-regista=Regista("giorge",22,"la vita e bella")
-regista.process()
+# giorge=Giorge("giorge",22)
+# giorge.process()
 
-print(giorge.name)
+# regista=Regista("giorge",22,"la vita e bella")
+# regista.process()
+
+# print(giorge.name)
 
 
+#  Definisci una lista che contenga 3 mete turistiche.
+# Stampale tutte a schermo e chiedi all'utente
+# dove desidera andare.
+# Per scegliere, dovrà immettere
+# l'indice dell'elemento della lista,
+# in questo caso un numero da 0 a 2.
+# Stampa a schermo un augurio di buon viaggio,
+# contenente la destinazione scelta.
+
+# Lancia il programma e tenta di farlo andare in errore,
+# così da trovare le eccezioni che potrebbero
+# verificarsi nel processo.
+# INDIZIO: Dovresti trovare due principali eccezioni.
+# Con un blocco try costituito da due rami except,
+# gestisci le due eccezioni.
+
+# car_price:20_000
+# try:
+#  moths =int(input("in quanti mesi vuoi pagare?"))
+#  monthly_payment = car_price / moths
+#  print(monthly_payment)
+# except ValueError:
+#     print("devi inserire un numero intero")
+# except ZeroDivisionError:
+#     print("devi inserire un numero diverso da 0") 
+
+# Aggiungi all'esercizio precedente,
+# un ulteriore funzionalità di gestione errori.
+# Se l'utente inserisce un numero negativo,
+# il programma DEVE andare in errore!
+# Perciò, in questo caso, solleva (col comando raise),
+# un eccezione ValueError o una IndexError,
+# quella che ti sembra più appropriata.
+# Senza fare nessun altra modifica,
+# prova a lanciare il programma
+# e inserire un numero negativo;
+# il blocco try-except dovrebbe gestirlo come atteso.
+
+
+# Turistic_met=["roma","milano","napoli","costarica","venezia","Palermo","Bora-Bora","Parigi","new-york","Tokio"]
+# for i, met in enumerate(Turistic_met):
+#     print(i,met,sep="_")
+
+# try:    
+#     selected_index=int(input("in che mete turistiche vuoi andare?🌍🎉 "))
+#     selected_met=Turistic_met[selected_index]
+#     print(f"buon viaggio   a ✈️  {selected_met}  ✈️  felice di essere stato d'aiuto ")
+# except ValueError:
+#     print("devi inserire un numero intero")    
+# except IndexError:
+#     print("Errore:destinazione inesistente ",
+#           f"Inserisci un numero da 0 a {len(Turistic_met)-1}")
+# if (selected_index<0):
+#     raise Exception("non si accettano numeri negativi grazie   🛑 Nessun viaggio verso il passato!") 
+
+
+ 
+# destinazioni = ["Stintino", "Viareggio", "Favignana"]
+# print("🌍 Dove ti porterà il tuo prossimo pellegrinaggio? Ecco le destinazioni che abbiamo pensato per te:")
+# indice = 0
+# for destinazione in destinazioni:
+#     print(f"{indice}: {destinazione}")
+#     indice += 1
+# try:
+#     choice = int(input("✈️ Inserisci il numero della tua meta preferita (0-2): "))
+#     if choice < 0:
+#         raise ValueError("Oh no! Sembra che tu abbia scelto un numero negativo. 🛑 Nessun viaggio verso il passato!")
+
+#     print(f"🎉 Hai scelto {destinazioni[choice]}! Prepara le valigie, il mare e l’avventura ti aspettano! 🏖️ Buon viaggio! 🪁")
+    
+# except ValueError as ve:
+#     print(f"⚠️ Ops, qualcosa è andato storto: {ve}")
+#     print("🐪 Dai, riproviamo insieme: scegli un numero valido tra 0 e 2. 🐪")
+# except IndexError:
+#     print("🚫 Ooops! Sembra che quella destinazione sia un po' troppo lontana dalla realtà. 😅 Prova con un numero tra 0 e 2!")
+# except Exception as e:
+#     print(f"🔍 Hmm, qualcosa di inaspettato è successo: {e}. Ma non preoccuparti, riproviamo insieme! 🌊😉")
+
+
+# Nell'esercizio precedente,
+# se il numero inserito è negativo,
+# solleva un'eccezione più appropriata.
+# Crea un eccezione utente, con un nome appropriato,
+# tramite una classe che eredita da Exception
+# e assegnale un messaggio d'errore personalizzato.
+# Ora sollevala col comando raise,
+# al posto di quella precedente.
+# Infine, gestisci questa nuova eccezione,
+# con un nuovo ramo except.
+
+
+
+
+# class NegativeDestinationError(Exception):
+#     def __init__(self):
+#         super().__init__("Il numero della destinazione non può essere negativo!")
+
+# travel_spots = ["Sudafrica", "Brasile", "Indonesia"]
+# for i, spot in enumerate(travel_spots):
+#     print(i, spot, sep="-")
+
+# try:
+#     selected_index = int(input("Dove desideri andare? "))
+#     if selected_index < 0:
+#         raise NegativeDestinationError
+#     selected_spot = travel_spots[selected_index]
+# except ValueError:
+#     print("Errore: inserisci un numero intero!")
+# except NegativeDestinationError as e:
+#     print(e)
+# except IndexError:
+#     print(
+#         "Errore: destinazione inesistente!",
+#         f"Inserisci un numero da 0 a {len(travel_spots) - 1}",
+#     )
+# else:
+#     print(f"Buon viaggio in {selected_spot}")
+
+
+#  Scrivi un programma che chiede all'utente
+# il nome di un social network che utilizza abitualmente
+# e la relativa password di accesso.
+# Il programma, a questo punto, apre un file
+# e scrive al suo interno una riga
+# contenente social e password,
+# magari separati da un = o un altro carattere a piacere.
+# Attenzione: ogni volta che il programma viene riavviato,
+# ed i nuovi social e password vengono inseriti,
+# la nuova riga che li conterrà dev'essere AGGIUNTA al file.
+
+# with open("lista della spesa.txt","w",encoding="utf-8") as file:
+#     file.write(item_to_buy)
+
+social_network = input()
+password = input()
+
+with open("social_networks.txt", "a") as file:
+  file.write(f"{social_network}={password}\n")
+
+
+#   Modifica il programma precedente,
+# aggiungendo la funzionalità di lettura.
+# All'avvio, il programma chiede all'utente
+# se desidera aggiungere un nuovo social e password,
+# o se desidera leggere quelli già presenti.
+# Se desidera aggiungere, procedi come in precedenza.
+# Se desidera leggere, apri il file in lettura,
+# e stampa a schermo ognuna delle righe
+# contenenti social e password,
+# precedute da un trattino o un altro carattere a piacere.
+
+
+FILENAME = "social_passwords.txt"
+
+
+def add_social_psw():
+    social = input("Inserisci il nome del social: ")
+    password = input(f"Inserisci la password per {social}: ")
+
+    with open(FILENAME, "a", encoding="utf-8") as file:
+        file.write(f"{social}={password}\n")
+
+    print("Elemento aggiunto!")
+
+
+def read_social_psw(FILENAME):
+    with open(FILENAME, "r", encoding="utf-8") as file:
+        for line in file:
+            print("🔐", line.strip())
+
+
+user_choice = input("Ciao, desisderi aggiungere o leggere? (a/l)")
+if user_choice == "a":
+    add_social_psw()
+elif user_choice == "l":
+    read_social_psw(FILENAME)
+else:
+    print("Scelta non valida!")
+
+#  Converti in un file json,
+# il file di testo generato,
+# negli esercizi precedenti
+# (non alterare l'originale).
+# Inizialmente crea un dizionario vuoto,
+# quindi apri il file di testo in lettura
+# accedi ciclicamente ad ognuna delle righe,
+# e dividila (metodo split)
+# per ottenere chiave (social) e valore (password).
+# Aggiungi al dizionario ciascuna coppia chiave-valore.
+# Infine, apri un nuovo file in scrittura,
+# e scrivi il dizionario su di esso,
+# serializzandolo col metodo json.dump.
