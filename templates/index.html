@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briscola - Gioco di Carte</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<h1>Briscola - Gioco di Carte</h1>
+
+<div class="scoreboard">
+    <div class="player-score" id="player-score">Punteggio Giocatore: 0</div>
+    <button id="start-btn">Inizia Partita</button>
+    <div class="opponent-score" id="opponent-score">Punteggio Avversario: 0</div>
+</div>
+
+<div class="game-area">
+    <div class="opponent-cards">
+        <div class="card opponent-card" id="opponent-card-1"></div>
+        <div class="card opponent-card" id="opponent-card-2"></div>
+        <div class="card opponent-card" id="opponent-card-3"></div>
+    </div>
+
+    <div class="played-cards">
+        <div class="deck-card" id="deck">Mazzo</div>
+        <div class="deck-card" id="briscola-card"></div>
+    </div>
+
+    <div id="game-result" class="game-result"></div>
+
+    <div class="played-cards">
+        <div class="card-played" id="player-card-played"></div>
+        <div class="card-played" id="opponent-card-played"></div>
+    </div>
+
+    <div id="player-hand"></div>
+</div>
+
+<script>
+    let remainingDeck = [];
+    let selectedCardIndex = null;
+
+    // Avvia il gioco e ricevi la risposta iniziale con il mazzo rimanente
+    document.getElementById('start-btn').addEventListener('click', async () => {
+        const response = await fetch('/start_game', {
+            method: 'POST',
+        });
+        const data = await response.json();
+
+        // Memorizza il mazzo rimanente
+        remainingDeck = data.remaining_deck;
+
+        // Mostra la mano del giocatore e la briscola
+        const playerHandDiv = document.getElementById('player-hand');
+        playerHandDiv.innerHTML = data.player1_hand.map((card, index) => {
+            return `<div class="card player-card" onclick="playCard(${index})">${card.rank} di ${card.suit}</div>`;
+        }).join('');
+
+        document.getElementById('briscola-card').innerText = `${data.briscola.rank} di ${data.briscola.suit}`;
+        
+        // Mostra le carte dell'avversario (coperte)
+        document.querySelectorAll('.opponent-card').forEach(card => {
+            card.innerHTML = `<img src="backside.png" alt="Card Back">`;
+        });
+    });
+
+    // Funzione per giocare una carta dalla mano del giocatore
+    async function playCard(index) {
+        selectedCardIndex = index;
+
+        // Prepara la mano del giocatore come oggetti con 'rank' e 'suit'
+        const playerHand = Array.from(document.querySelectorAll('.player-card')).map(card => {
+            const [rank, suit] = card.innerText.split(' di ');
+            return { rank, suit };
+        });
+
+        const briscola = document.getElementById('briscola-card').innerText.split(' di ');
+
+        const response = await fetch('/play_turn', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                player_hand: playerHand,
+                chosen_card_index: selectedCardIndex,
+                remaining_deck: remainingDeck
+            })
+        });
+
+        const data = await response.json();
+
+        // Mostra la carta giocata dal giocatore
+        const playerCardPlayedDiv = document.getElementById('player-card-played');
+        playerCardPlayedDiv.innerHTML = `<div class="card">${data.chosen_card}</div>`;
+
+        // Mostra la carta giocata dall'avversario
+        const opponentCardPlayedDiv = document.getElementById('opponent-card-played');
+        opponentCardPlayedDiv.innerHTML = `<div class="card">${data.opponent_card}</div>`;
+
+        // Mostra il risultato del turno sotto il mazzo
+        document.getElementById('game-result').innerText = data.result;
+
+        // Aggiorna il mazzo rimanente per il prossimo turno
+        remainingDeck = data.remaining_deck;
+
+        // Mostra la nuova mano del giocatore
+        const playerHandDiv = document.getElementById('player-hand');
+        playerHandDiv.innerHTML = data.player1_hand.map((card, index) => {
+            return `<div class="card player-card" onclick="playCard(${index})">${card.rank} di ${card.suit}</div>`;
+        }).join('');
+
+        // Mostra il punteggio aggiornato
+        document.getElementById('player-score').innerText = `Punteggio Giocatore: ${data.player1_score}`;
+        document.getElementById('opponent-score').innerText = `Punteggio Avversario: ${data.player2_score}`;
+
+        // Controlla se il gioco è finito
+        if (data.game_over) {
+            alert(`Gioco Finito! Risultato:\n${data.result}`);
+        }
+    }
+
+    // Funzione per pescare una carta dal mazzo
+    document.getElementById('deck').addEventListener('click', async () => {
+        const response = await fetch('/draw_card', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        });
+
+        const data = await response.json();
+
+        // Aggiorna la mano del giocatore e l'avversario
+        const playerHandDiv = document.getElementById('player-hand');
+        playerHandDiv.innerHTML = data.player1_hand.map((card, index) => {
+            return `<div class="card player-card" onclick="playCard(${index})">${card.rank} di ${card.suit}</div>`;
+        }).join('');
+    });
+
+</script>
+
+</body>
+</html>

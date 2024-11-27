@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #3e3939;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #ed7708;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.player-score, .opponent-score {
+    background-color: #ed7708;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#start-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ed7708;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-btn:hover {
+    background-color: #ed7708;
+}
+
+.game-area {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.opponent-cards {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#player-hand {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    position: relative;
+    bottom: 0;
+}
+
+.card {
+    display: inline-block;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    cursor: pointer;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.card:hover {
+    background-color: #f1f1f1;
+}
+
+.card.selected {
+    background-color: #b3d9ff;
+    border: 2px solid #ed7708;
+}
+
+#draw-card-btn, #play-turn-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ed7708;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: none !important;
+}
+
+#draw-card-btn:hover, #play-turn-btn:hover {
+    background-color: #ed7708;
+}
+
+.played-cards {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    align-items: center;
+}
+
+.played-cards .deck {
+    margin-right: 40px;
+}
+
+.deck-card {
+    display: inline-block;
+    background-color: #ed7708;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100px;
+    height: 150px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#game-status {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}

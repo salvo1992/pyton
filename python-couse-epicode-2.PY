@@ -303,13 +303,13 @@
 # la nuova riga che li conterrà dev'essere AGGIUNTA al file.
 
 # with open("lista della spesa.txt","w",encoding="utf-8") as file:
-#     file.write(item_to_buy)
+# #     file.write(item_to_buy)
 
-social_network = input()
-password = input()
+# social_network = input()
+# password = input()
 
-with open("social_networks.txt", "a") as file:
-  file.write(f"{social_network}={password}\n")
+# with open("social_networks.txt", "a") as file:
+#   file.write(f"{social_network}={password}\n")
 
 
 #   Modifica il programma precedente,
@@ -324,32 +324,32 @@ with open("social_networks.txt", "a") as file:
 # precedute da un trattino o un altro carattere a piacere.
 
 
-FILENAME = "social_passwords.txt"
+# FILENAME = "social_passwords.txt"
 
 
-def add_social_psw():
-    social = input("Inserisci il nome del social: ")
-    password = input(f"Inserisci la password per {social}: ")
+# def add_social_psw():
+#     social = input("Inserisci il nome del social: ")
+#     password = input(f"Inserisci la password per {social}: ")
 
-    with open(FILENAME, "a", encoding="utf-8") as file:
-        file.write(f"{social}={password}\n")
+#     with open(FILENAME, "a", encoding="utf-8") as file:
+#         file.write(f"{social}={password}\n")
 
-    print("Elemento aggiunto!")
-
-
-def read_social_psw(FILENAME):
-    with open(FILENAME, "r", encoding="utf-8") as file:
-        for line in file:
-            print("🔐", line.strip())
+#     print("Elemento aggiunto!")
 
 
-user_choice = input("Ciao, desisderi aggiungere o leggere? (a/l)")
-if user_choice == "a":
-    add_social_psw()
-elif user_choice == "l":
-    read_social_psw(FILENAME)
-else:
-    print("Scelta non valida!")
+# def read_social_psw(FILENAME):
+#     with open(FILENAME, "r", encoding="utf-8") as file:
+#         for line in file:
+#             print("🔐", line.strip())
+
+
+# user_choice = input("Ciao, desisderi aggiungere o leggere? (a/l)")
+# if user_choice == "a":
+#     add_social_psw()
+# elif user_choice == "l":
+#     read_social_psw(FILENAME)
+# else:
+#     print("Scelta non valida!")
 
 #  Converti in un file json,
 # il file di testo generato,
@@ -364,3 +364,193 @@ else:
 # Infine, apri un nuovo file in scrittura,
 # e scrivi il dizionario su di esso,
 # serializzandolo col metodo json.dump.
+
+
+
+# import json
+# social_passwords ={}
+# with open("social_password.txt","r",encoding="utf-8") as file:
+#     for line in file:
+#        key,value =(line.strip().split("="))
+#        social_passwords[key] = value
+
+# with open("social_password.json","w",encoding="utf-8") as file:
+#     json.dump(social_passwords,file, indent=4,ensure_ascii=False)
+
+
+
+
+# from collections import deque
+# queue = deque()
+
+# queue.append(1)
+# queue.append(2)
+# queue.append(3)
+
+
+# print(queue)   
+# print(queue.popleft())
+# queue.append(4)
+# print(queue.popleft())
+
+
+# stack = deque()
+
+# stack.append(1)
+# stack.append(2)
+# stack.append(3)
+# print(stack)
+# print(stack.pop())
+# stack.append(4)
+# print(stack.pop())
+
+
+# Inizializza una struttura dati adatta a gestire,
+# una collezione di siti web visitati (stringhe).
+# Ora, definisci un ciclo infinito
+# in cui viene richiesto all'utente quale sito vuole visitare.
+# Il sito immesso viene aggiunto alla collezione.
+# Se però l'utente immette il carattere <
+# significa che vuole tornare indietro al sito precedente,
+# allora rimuovi l'ultimo sito dalla collezione.
+# A fine iterazione di ciclo,
+# stampa il sito in cui l'utente si trova attualmente.
+
+# from collections import deque
+# queue = deque()
+
+# queue.append("a")
+# queue.popleft()
+# queue[0]
+
+# stack = deque()
+# stack.append("a")
+# stack.pop()
+# queue[-1]
+ 
+# from collections import deque
+
+# history = deque()
+
+# while True:
+#     user_input = input(
+#         "Quale nuovo sito vuoi visitare? Digita < per tornare al precedente: ")
+#     if user_input == "<":
+#         if history:
+#             history.pop()
+#     else:
+#         history.append(user_input)
+
+#     if history:
+#         print(f"Ti trovi su {history[-1]}")
+#     else:
+#         print("Ti trovi sulla homepage")
+
+
+
+# from collections import deque
+
+# # Inizializza uno stack per gestire i siti web visitati
+# visited_sites = deque()
+
+# while True:
+#     # Richiedi all'utente il sito da visitare
+#     site = input("Inserisci l'URL del sito da visitare (oppure '<' per tornare indietro): ")
+    
+#     if site == "<":
+#         # Se l'utente vuole tornare indietro, rimuovi l'ultimo sito visitato
+#         if visited_sites:
+#             visited_sites.pop()
+#         else:
+#             print("Nessun sito precedente a cui tornare.")
+#     else:
+#         # Aggiungi il nuovo sito alla collezione
+#         visited_sites.append(site)
+    
+#     # Stampa il sito corrente, se esiste
+#     if visited_sites:
+#         print(f"Sei attualmente su: {visited_sites[-1]}")
+#     else:
+#         print("Non ci sono siti nella cronologia.")
+
+
+
+# Crea una classe che implementa la struttura dati Queue.
+# Possiede un attributo che rappresenta la collezione,
+# e due metodi, enqueue e dequeue,
+# che servono rispettivamente ad aggiungere e rimuovere
+# un elemento dalla collezione
+# (rispettando i principi della Queue).
+# Istanzia quindi un oggetto della classe e testalo,
+# per valutare se funziona come atteso.
+
+
+from collections import deque
+
+
+class Queue:
+    def __init__(self):
+        self.queue = deque()
+
+    def enqueue(self, item):
+        self.queue.append(item)
+
+    def dequeue(self):
+        if self.queue:
+            return self.queue.popleft()
+        else:
+            return None
+
+
+printer = Queue()
+printer.enqueue("doc1")
+printer.enqueue("doc2")
+print(printer.dequeue())
+print(printer.dequeue())
+print(printer.dequeue())
+
+
+
+# Come fatto nell'esercizio precedente crea una classe,
+# ma stavolta, implementa la struttura dati Stack.
+# La classe, oltre i metodi/attributi dell'esercizio precedente,
+# deve prevedere altri tre metodi:
+# peek: mostra l'elemento in cima allo stack (senza rimuoverlo)
+# is_empty: restituisce vero se lo stack è vuoto
+# size: restituisce il numero degli elementi nello stack
+
+from collections import deque
+
+class Stack:
+    def __init__(self):
+        self.stack = deque()
+    
+    def push(self, item):
+        self.stack.append(item)
+    
+    def pop(self):
+        if self.is_empty():
+            return None
+        else:
+            return self.stack.pop()
+    
+    def is_empty(self):
+        return len(self.stack) == 0
+
+    def peek(self):
+        if self.is_empty():
+            return None
+        else:
+            return self.stack[-1]
+    
+    def size(self):
+        return len(self.stack)
+
+stack = Stack()
+stack.push("a")
+stack.push("b")
+stack.push("c")
+print(stack.pop())
+print(stack.pop())
+print(stack.pop())
+print(stack.pop()) 
