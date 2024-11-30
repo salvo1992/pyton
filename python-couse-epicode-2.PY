@@ -485,29 +485,29 @@
 # per valutare se funziona come atteso.
 
 
-from collections import deque
+# from collections import deque
 
 
-class Queue:
-    def __init__(self):
-        self.queue = deque()
+# class Queue:
+#     def __init__(self):
+#         self.queue = deque()
 
-    def enqueue(self, item):
-        self.queue.append(item)
+#     def enqueue(self, item):
+#         self.queue.append(item)
 
-    def dequeue(self):
-        if self.queue:
-            return self.queue.popleft()
-        else:
-            return None
+#     def dequeue(self):
+#         if self.queue:
+#             return self.queue.popleft()
+#         else:
+#             return None
 
 
-printer = Queue()
-printer.enqueue("doc1")
-printer.enqueue("doc2")
-print(printer.dequeue())
-print(printer.dequeue())
-print(printer.dequeue())
+# printer = Queue()
+# printer.enqueue("doc1")
+# printer.enqueue("doc2")
+# print(printer.dequeue())
+# print(printer.dequeue())
+# print(printer.dequeue())
 
 
 
@@ -519,38 +519,42 @@ print(printer.dequeue())
 # is_empty: restituisce vero se lo stack è vuoto
 # size: restituisce il numero degli elementi nello stack
 
-from collections import deque
+# from collections import deque
 
-class Stack:
-    def __init__(self):
-        self.stack = deque()
+# class Stack:
+#     def __init__(self):
+#         self.stack = deque()
     
-    def push(self, item):
-        self.stack.append(item)
+#     def push(self, item):
+#         self.stack.append(item)
     
-    def pop(self):
-        if self.is_empty():
-            return None
-        else:
-            return self.stack.pop()
+#     def pop(self):
+#         if self.is_empty():
+#             return None
+#         else:
+#             return self.stack.pop()
     
-    def is_empty(self):
-        return len(self.stack) == 0
+#     def is_empty(self):
+#         return len(self.stack) == 0
 
-    def peek(self):
-        if self.is_empty():
-            return None
-        else:
-            return self.stack[-1]
+#     def peek(self):
+#         if self.is_empty():
+#             return None
+#         else:
+#             return self.stack[-1]
     
-    def size(self):
-        return len(self.stack)
+#     def size(self):
+#         return len(self.stack)
 
-stack = Stack()
-stack.push("a")
-stack.push("b")
-stack.push("c")
-print(stack.pop())
-print(stack.pop())
-print(stack.pop())
-print(stack.pop()) 
+# stack = Stack()
+# stack.push("a")
+# stack.push("b")
+# stack.push("c")
+# print(stack.pop())
+# print(stack.pop())
+# print(stack.pop())
+# print(stack.pop()) 
+
+
+
+# https://peps.python.org/pep-0008/
