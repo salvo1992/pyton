@@ -558,3 +558,63 @@
 
 
 # https://peps.python.org/pep-0008/
+
+# https://openweathermap.org/current
+
+
+# import requests
+
+# response = requests.get(
+#     "https://api.openweathermap.org/data/2.5/weather",
+#     params= {
+#         "appid": "666f2076b0a9ac767d87bb22b1d6902e",
+#         "q": "Manaus",
+#         "units": "metric",
+#     }
+#     )
+
+# weather_data = response.json()
+# print(weather_data["main"]["feels_like"])
+
+
+
+#  Scrivi un programma che chiede all'utente
+# il nome di un Pokémon.
+# Invia una richiesta GET all'api pokeapi.co,
+# verifica se ha successo,
+# e in caso affermativo, stampa a schermo
+# l'altezza, il peso, e il tipo del Pokémon.
+# import requests
+# pokemon_name=input()
+
+# response=requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon_name}")
+# print(response.status_code)
+# response.raise_for_status()
+# print(response.json()["height"])
+# print(response.json()["weight"])
+# print(response.json()["types"][0]["type"]["name"])
+# print(response.json()["types"][1]["type"]["name"])
+
+# print(response.text)
+
+ 
+import requests
+
+pokemon_name = input("Inserisci il Pokémon: ").strip()
+response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon_name}")
+
+if response.status_code == 200:
+    pokemon_data = response.json()
+    height = pokemon_data["height"] / 10
+    weight = pokemon_data["weight"] / 10
+    type_name = pokemon_data["types"][0]["type"]["name"]
+    print(
+        f"{pokemon_data['name']} è alto {height} metri,",
+        f"pesa {weight} kg",
+        f"ed è di tipo {type_name}"
+    )
+else:
+    print("Pokémon non trovato :(")
+
+
+# pitoneprogrammatore.com
